@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   const TIMEOUT = 8000; // 8 seconds to allow for some overhead
 
   // Create an AbortController for the fetch request
