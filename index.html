@@ -266,36 +266,31 @@
         </div>
     </footer>
 
-    <div id="popup" class="popup">
-        <div class="popup-content" data-aos="zoom-in">
-            <h2 class="text-3xl font-bold mb-6 text-center">הרשמה לסדנה</h2>
-            <form id="registrationForm" onsubmit="submitForm(event)">
-                <div class="mb-4">
-                    <label for="firstName" class="block mb-2">שם פרטי</label>
-                    <input type="text" id="firstName" name="firstName" required class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-                </div>
-                <div class="mb-4">
-                    <label for="lastName" class="block mb-2">שם משפחה</label>
-                    <input type="text" id="lastName" name="lastName" required class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-                </div>
-                <div class="mb-4">
-                    <label for="phoneNumber" class="block mb-2">טלפון נייד</label>
-                    <input type="tel" id="phoneNumber" name="phoneNumber" required class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-                </div>
-                <div class="mb-6">
-                    <label for="email" class="block mb-2">כתובת אימייל</label>
-                    <input type="email" id="email" name="email" required class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-                </div>
-                <input type="hidden" id="workshopType" name="workshopType">
-                <button type="submit" class="btn-primary w-full text-lg">הרשמה ותשלום</button>
-            </form>
-            <button onclick="closePopup()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
+    <<div id="popup" class="popup">
+        <div class="popup-content aos="zoom-in">
+          <h2 class="text-3xl font-bold mb-6 text-center">הרשמה לסדנה</h2>
+          <form id="registrationForm">
+            <div class="mb-4">
+              <input type="text" id="firstName" name="firstName" placeholder="שם פרטי" required>
+            </div>
+            <div class="mb-4">
+              <input type="text" id="lastName" name="lastName" placeholder="שם משפחה" required>
+            </div>
+            <div class="mb-4">
+              <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="טלפון נייד" required>
+            </div>
+            <div class="mb-6">
+              <input type="email" id="email" name="email" placeholder="כתובת אימייל" required>
+            </div>
+            <button type="submit" class="btn-primary">הרשמה ותשלום</button>
+          </form>
+          <button id="closePopup" class="absolute top-2 right-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
         </div>
-    </div>
+      </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
@@ -385,6 +380,45 @@
                 closePopup();
             }
         }
+        <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('registrationForm');
+  const popup = document.getElementById('popup');
+  const closePopup = document.getElementById('closePopup');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch('/.netlify/functions/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        alert('ההרשמה הושלמה בהצלחה!');
+        form.reset();
+        popup.style.display = 'none';
+      } else {
+        throw new Error('Registration failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('אירעה שגיאה בעת ההרשמה. אנא נסו שנית.');
+    }
+  });
+
+  closePopup.addEventListener('click', function() {
+    popup.style.display = 'none';
+  });
+});
+</script>
     </script>
 </body>
 </html>
