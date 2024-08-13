@@ -1,0 +1,45 @@
+# הגדרות בנייה בסיסיות
+[build]
+  # התיקייה שממנה יש לשרת את הקבצים הסטטיים
+  publish = "."
+  
+  # הפקודה לבניית הפרויקט (אם יש צורך)
+  # אם אין לך שלב בנייה, אתה יכול להשאיר את זה כהערה או להסיר
+  # command = "npm run build"
+  
+  # התיקייה שבה נמצאות הפונקציות של Netlify
+  functions = "functions"
+
+# הגדרות ניתוב
+[[redirects]]
+  # הפניה מכל הנתיבים לקובץ index.html
+  # זה חשוב עבור אפליקציות Single Page Application (SPA)
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# הגדרות עבור Netlify Functions
+[functions]
+  # התיקייה שבה נמצאות הפונקציות
+  directory = "functions"
+
+# הגדרות עבור הסביבה
+[build.environment]
+  # אתה יכול להגדיר משתני סביבה כאן אם יש צורך
+  # למשל:
+  # NODE_VERSION = "14"
+
+# הגדרות נוספות לפי הצורך
+# למשל, אם יש לך צורך בהגדרות מיוחדות עבור העלאת קבצים גדולים:
+[build.processing]
+  skip_processing = false
+[build.processing.css]
+  bundle = true
+  minify = true
+[build.processing.js]
+  bundle = true
+  minify = true
+[build.processing.html]
+  pretty_urls = true
+[build.processing.images]
+  compress = true

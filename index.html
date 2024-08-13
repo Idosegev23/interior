@@ -258,11 +258,10 @@
                         <a href="https://www.tiktok.com/@triroars" target="_blank" class="hover:text-primary transition-colors">TikTok</a>
                         <a href="https://www.instagram.com/triroars/" target="_blank" class="hover:text-primary transition-colors">Instagram</a>
                     </div>
-
                 </div>
             </div>
             <div class="mt-8 text-center">
-                <p>&copy; 2024 סדנאות בינה מלאכותית למעצבי פנים.  TriRaors - BY - IDO SEGEV כל הזכויות שמורות.</p>
+                <p>&copy; 2024 סדנאות בינה מלאכותית למעצבי פנים. TriRaors - BY - IDO SEGEV כל הזכויות שמורות.</p>
             </div>
         </div>
     </footer>
@@ -298,7 +297,6 @@
         </div>
     </div>
 
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
         AOS.init({
@@ -322,26 +320,18 @@
             const workshopType = formData.get('workshopType');
 
             try {
-                // Send data to SendGrid
-                const response = await fetch('/api/register', {
+                const response = await fetch('/.netlify/functions/register', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({
-                        email: formData.get('email'),
-                        firstName: formData.get('firstName'),
-                        lastName: formData.get('lastName'),
-                        phoneNumber: formData.get('phoneNumber'),
-                        workshopType: workshopType
-                    })
+                    body: JSON.stringify(Object.fromEntries(formData))
                 });
 
                 if (!response.ok) {
                     throw new Error('Failed to register');
                 }
 
-                // Redirect to payment page based on workshop type
                 let paymentUrl;
                 switch (workshopType) {
                     case 'ai':
