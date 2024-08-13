@@ -2,22 +2,17 @@ import fetch from 'node-fetch';
 
 async function handler(event, context) {
   // Set a timeout slightly less than Vercel's 10-second limit
-  const timeoutPromise = new Promise((_, reject) => 
-    setTimeout(() => reject(new Error('Function execution timed out')), 9000)
-  );
+  const TIMEOUT = 9000;
+  let timeoutId;
+
+  const timeoutPromise = new Promise((_, reject) => {
+    timeoutId = setTimeout(() => reject(new Error('Function execution timed out')), TIMEOUT);
+  });
 
   try {
     // Check for SENDGRID_API environment variable
     if (!process.env.SENDGRID_API) {
-      console.error('SENDGRID_API environment variable is not set');
-      return {
-        statusCode: 500,
-        body: JSON.stringify({ error: 'Server configuration error' }),
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': 'Content-Type'
-        }
-      };
+      throw new Error('SENDGRID_API environment variable is not set');
     }
 
     // Check if the request method is POST
@@ -36,14 +31,7 @@ async function handler(event, context) {
 
     // Input validation
     if (!email || !firstName || !lastName || !phoneNumber || !workshopType) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ error: 'Missing required fields' }),
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': 'Content-Type'
-        }
-      };
+      throw new Error('Missing required fields');
     }
 
     const sendGridPromise = fetch('https://api.sendgrid.com/v3/marketing/contacts', {
@@ -69,6 +57,8 @@ async function handler(event, context) {
     // Race the SendGrid API call against the timeout
     const response = await Promise.race([sendGridPromise, timeoutPromise]);
 
+    clearTimeout(timeoutId);  // Clear the timeout if the API call succeeds
+
     if (!response.ok) {
       const errorData = await response.json();
       console.error('SendGrid API Error:', errorData);
@@ -84,10 +74,27 @@ async function handler(event, context) {
       }
     };
   } catch (error) {
+    clearTimeout(timeoutId);  // Ensure timeout is cleared in case of error
     console.error('Error:', error);
+    
+    let statusCode, errorMessage;
+    if (error.message === 'Function execution timed out') {
+      statusCode = 504;
+      errorMessage = 'Request timed out';
+    } else if (error.message === 'Missing required fields') {
+      statusCode = 400;
+      errorMessage = 'Missing required fields';
+    } else if (error.message === 'SENDGRID_API environment variable is not set') {
+      statusCode = 500;
+      errorMessage = 'Server configuration error';
+    } else {
+      statusCode = 500;
+      errorMessage = 'Failed to add contact to SendGrid list';
+    }
+
     return {
-      statusCode: error.message === 'Function execution timed out' ? 504 : 500,
-      body: JSON.stringify({ error: error.message === 'Function execution timed out' ? 'Request timed out' : 'Failed to add contact to SendGrid list' }),
+      statusCode,
+      body: JSON.stringify({ error: errorMessage }),
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': 'Content-Type'
