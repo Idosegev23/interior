@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
 module.exports = async function handler(req, res) {
   const TIMEOUT = 8000; // 8 seconds to allow for some overhead
