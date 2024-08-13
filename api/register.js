@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 
-export const handler = async function(event, context) {
+async function handler(event, context) {
   // Check for SENDGRID_API environment variable
   if (!process.env.SENDGRID_API) {
     console.error('SENDGRID_API environment variable is not set');
@@ -86,4 +86,6 @@ export const handler = async function(event, context) {
       }
     };
   }
-};
+}
+
+export default handler;
