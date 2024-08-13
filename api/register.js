@@ -1,6 +1,6 @@
-import fetch from 'node-fetch';
+const fetch = require('node-fetch');
 
-async function handler(event, context) {
+module.exports = async function handler(req, res) {
   const TIMEOUT = 8000; // 8 seconds to allow for some overhead
 
   // Create an AbortController for the fetch request
@@ -19,18 +19,12 @@ async function handler(event, context) {
     }
 
     // Check if the request method is POST
-    if (event.httpMethod !== 'POST') {
-      return { 
-        statusCode: 405, 
-        body: JSON.stringify({ error: 'Method Not Allowed' }),
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': 'Content-Type'
-        }
-      };
+    if (req.method !== 'POST') {
+      res.setHeader('Allow', ['POST']);
+      return res.status(405).json({ error: 'Method Not Allowed' });
     }
 
-    const { email, firstName, lastName, phoneNumber, workshopType } = JSON.parse(event.body);
+    const { email, firstName, lastName, phoneNumber, workshopType } = req.body;
 
     // Input validation
     if (!email || !firstName || !lastName || !phoneNumber || !workshopType) {
@@ -66,18 +60,11 @@ async function handler(event, context) {
       throw new Error('Failed to add contact to SendGrid list');
     }
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ message: 'Contact added successfully' }),
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type'
-      }
-    };
+    return res.status(200).json({ message: 'Contact added successfully' });
   } catch (error) {
     clearTimeout(timeoutId); // Ensure timeout is cleared in case of error
 
-    console.error('Error:', error);
+    console.error('Error:', error.message, error.stack);
     
     let statusCode, errorMessage;
     if (error.name === 'AbortError') {
@@ -94,15 +81,6 @@ async function handler(event, context) {
       errorMessage = 'Failed to add contact to SendGrid list';
     }
 
-    return {
-      statusCode,
-      body: JSON.stringify({ error: errorMessage }),
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type'
-      }
-    };
+    return res.status(statusCode).json({ error: errorMessage });
   }
-}
-
-export default handler;
+};
