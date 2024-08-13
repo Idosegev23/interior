@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>סדנאות בינה מלאכותית למעצבי פנים - חדשנות ואסתטיקה</title>
+    <title>סדנאות בינה מלאכותית למעצבי פנים</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap');
 
@@ -22,6 +23,9 @@
             font-family: 'Heebo', sans-serif;
             background: linear-gradient(135deg, var(--color-light), #ffffff);
             color: var(--color-secondary);
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         .btn-primary {
@@ -74,6 +78,13 @@
             max-width: 500px;
             width: 90%;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .popup-content button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
         }
 
         .hero {
@@ -81,6 +92,7 @@
             background-size: cover;
             background-position: center;
             position: relative;
+            height: 100vh;
         }
 
         .hero::before {
@@ -123,12 +135,75 @@
             outline: none;
             box-shadow: 0 0 0 3px rgba(101, 33, 143, 0.3);
         }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+        }
+        
+        .mobile-menu.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .mobile-menu a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .flex {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .justify-center {
+            justify-content: center;
+        }
+
+        .space-x-6 > * + * {
+            margin-left: 1.5rem;
+        }
+
+        /* Mobile-specific styles */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.25rem;
+            }
+            
+            .workshop-card {
+                margin-bottom: 1.5rem;
+            }
+
+            .header-logo {
+                flex-grow: 1;
+                display: flex;
+                justify-content: center;
+            }
+
+            nav {
+                display: flex; /* Hide the navigation links on mobile */
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
     <header class="bg-transparent text-white py-6 fixed w-full z-50 transition-all duration-300" id="navbar">
         <div class="container mx-auto px-4 flex justify-between items-center">
-            <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723558434/NewLogo_BLANK-Recovered_x4kgew.png" alt="Logo" class="h-24">
+            <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723558434/NewLogo_BLANK-Recovered_x4kgew.png" alt="Logo" class="h-24 header-logo">
             <nav>
                 <a href="#about" class="mr-4 hover:text-primary transition-colors">אודות</a>
                 <a href="#workshops" class="mr-4 hover:text-primary transition-colors">סדנאות</a>
@@ -191,7 +266,7 @@
                             <p class="mb-4">גלו כיצד Midjourney יכול לשפר את תהליך העיצוב שלכם ולהפוך רעיונות לויזואליזציות מדהימות.</p>
                             <p class="mb-2"><strong>תאריכים:</strong> 25.8, 1.9, 8.9 בשעה 20:00</p>
                             <p class="mb-2"><strong>משך:</strong> שעתיים כל מפגש</p>
-                            <p class="mb-4"><strong>עלות:</strong> ₪400</p>
+                            <p class="mb-4"><strong>עלות:</strong> ₪700</p>
                             <button onclick="openPopup('midjourney')" class="btn-primary w-full">הרשמה</button>
                         </div>
                     </div>
@@ -215,12 +290,11 @@
                 <h2 class="text-4xl font-bold mb-12 text-center text-white" data-aos="fade-up">מה אומרים המשתתפים שלנו?</h2>
                 <div class="grid md:grid-cols-2 gap-8">
                     <div class="bg-white p-6 rounded-lg shadow-lg testimonial" data-aos="fade-right">
-                        <p class="mb-4">"הייתה סדנה מעולה! העשרת לנו את עולם התוכן ולימדת אותנו כלים משמעותיים וחשובים בעולם האדריכלות ועיצוב הפנים! תודה רבה על המקצועיות, ההדרכה המצויינת וההקשבה 👋
-                            הפנים! תודה רבה על המקצועיות, ההדרכה המצויינת וההקשבה 👋🏻🥰"</p>
+                        <p class="mb-4">"הייתה סדנה מעולה! העשרת לנו את עולם התוכן ולימדת אותנו כלים משמעותיים וחשובים בעולם האדריכלות ועיצוב הפנים! תודה רבה על המקצועיות, ההדרכה המצויינת וההקשבה 👋🏻🥰"</p>
                         <p class="font-bold text-right">- דנה</p>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-lg testimonial" data-aos="fade-left">
-                        <p class="mb-4">"עידו תודה רבה על כל לימוד הטכניקות, השיטות. הסבלנות בהחלט בהחלט סדנא מעמיקה בעיקר לתחום. אין לי ספק שנפגש גם בסדנאות הבאות!!!. מעבר להיכרות התוכנות שאיך עד כה לא נחשפתי אליהם וסופר חשובים במקצוע שלנו העברת השיעורים ביתר סבלנות הקנתה לי ביטחון ורצון לגעת בהכל. אז תודה רבה ונתראה בסדנא הבאה"</p>
+                        <p class="mb-4">"עידו תודה רבה על כל לימוד הטכניקות, השיטות. הסבלנות בהחלט בהחלט סדנא מעמיקה בעיקר לתחום. אין לי ספק שנפגש גם בסדנאות הבאות!!! מעבר להיכרות התוכנות שאיך עד כה לא נחשפתי אליהם וסופר חשובים במקצוע שלנו העברת השיעורים ביתר סבלנות הקנתה לי ביטחון ורצון לגעת בהכל. אז תודה רבה ונתראה בסדנא הבאה"</p>
                         <p class="font-bold text-right">- זיו</p>
                     </div>
                 </div>
@@ -253,10 +327,10 @@
                 </div>
                 <div>
                     <h4 class="text-xl font-bold mb-4">עקבו אחרינו</h4>
-                    <div class="flex space-x-4">
-                        <a href="https://www.facebook.com/profile.php?id=61553596496338" target="_blank" class="hover:text-primary transition-colors">Facebook</a>
-                        <a href="https://www.tiktok.com/@triroars" target="_blank" class="hover:text-primary transition-colors">TikTok</a>
-                        <a href="https://www.instagram.com/triroars/" target="_blank" class="hover:text-primary transition-colors">Instagram</a>
+                    <div class="flex justify-center space-x-6 mt-4">
+                        <a href="https://www.facebook.com/profile.php?id=61553596496338" target="_blank" class="hover:text-primary transition-colors"><i class="fab fa-facebook-f text-2xl"></i></a>
+                        <a href="https://www.tiktok.com/@triroars" target="_blank" class="hover:text-primary transition-colors"><i class="fab fa-tiktok text-2xl"></i></a>
+                        <a href="https://www.instagram.com/triroars/" target="_blank" class="hover:text-primary transition-colors"><i class="fab fa-instagram text-2xl"></i></a>
                     </div>
                 </div>
             </div>
