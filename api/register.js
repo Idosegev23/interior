@@ -1,5 +1,6 @@
 import fetch from 'node-fetch';
-module.exports = async function handler(req, res) {
+
+export default async function handler(req, res) {
   if (req.method === 'POST') {
     const { email, firstName, lastName, phoneNumber, workshopType } = req.body;
 
