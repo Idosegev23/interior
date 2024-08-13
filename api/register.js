@@ -1,13 +1,16 @@
 import fetch from 'node-fetch';
 
 async function handler(event, context) {
-  // Set a timeout slightly less than Vercel's 10-second limit
-  const TIMEOUT = 9000;
-  let timeoutId;
+  const TIMEOUT = 8000; // 8 seconds to allow for some overhead
 
-  const timeoutPromise = new Promise((_, reject) => {
-    timeoutId = setTimeout(() => reject(new Error('Function execution timed out')), TIMEOUT);
-  });
+  // Create an AbortController for the fetch request
+  const controller = new AbortController();
+  const { signal } = controller;
+
+  // Set a timeout to abort the fetch request
+  const timeoutId = setTimeout(() => {
+    controller.abort();
+  }, TIMEOUT);
 
   try {
     // Check for SENDGRID_API environment variable
@@ -34,7 +37,7 @@ async function handler(event, context) {
       throw new Error('Missing required fields');
     }
 
-    const sendGridPromise = fetch('https://api.sendgrid.com/v3/marketing/contacts', {
+    const response = await fetch('https://api.sendgrid.com/v3/marketing/contacts', {
       method: 'PUT',
       headers: {
         'Authorization': `Bearer ${process.env.SENDGRID_API}`,
@@ -51,13 +54,11 @@ async function handler(event, context) {
             e1_T: workshopType
           }
         }]
-      })
+      }),
+      signal // Pass the AbortController signal to the fetch request
     });
 
-    // Race the SendGrid API call against the timeout
-    const response = await Promise.race([sendGridPromise, timeoutPromise]);
-
-    clearTimeout(timeoutId);  // Clear the timeout if the API call succeeds
+    clearTimeout(timeoutId); // Clear the timeout if the API call succeeds
 
     if (!response.ok) {
       const errorData = await response.json();
@@ -74,11 +75,12 @@ async function handler(event, context) {
       }
     };
   } catch (error) {
-    clearTimeout(timeoutId);  // Ensure timeout is cleared in case of error
+    clearTimeout(timeoutId); // Ensure timeout is cleared in case of error
+
     console.error('Error:', error);
     
     let statusCode, errorMessage;
-    if (error.message === 'Function execution timed out') {
+    if (error.name === 'AbortError') {
       statusCode = 504;
       errorMessage = 'Request timed out';
     } else if (error.message === 'Missing required fields') {
