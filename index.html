@@ -23,9 +23,6 @@
             font-family: 'Heebo', sans-serif;
             background: linear-gradient(135deg, var(--color-light), #ffffff);
             color: var(--color-secondary);
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
         }
 
         .btn-primary {
@@ -78,13 +75,6 @@
             max-width: 500px;
             width: 90%;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            position: relative;
-        }
-
-        .popup-content button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
         }
 
         .hero {
@@ -92,7 +82,6 @@
             background-size: cover;
             background-position: center;
             position: relative;
-            height: 100vh;
         }
 
         .hero::before {
@@ -159,43 +148,10 @@
             font-size: 1.5rem;
             margin: 1rem 0;
         }
-        
-        .flex {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .justify-center {
-            justify-content: center;
-        }
 
-        .space-x-6 > * + * {
-            margin-left: 1.5rem;
-        }
-
-        /* Mobile-specific styles */
         @media (max-width: 768px) {
-            .hero h2 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.25rem;
-            }
-            
-            .workshop-card {
-                margin-bottom: 1.5rem;
-            }
-
-            .header-logo {
-                flex-grow: 1;
-                display: flex;
-                justify-content: center;
-            }
-
-            nav {
-                display: flex; /* Hide the navigation links on mobile */
+            .logo {
+                height: 4rem;
             }
         }
     </style>
@@ -203,19 +159,28 @@
 <body class="min-h-screen flex flex-col">
     <header class="bg-transparent text-white py-6 fixed w-full z-50 transition-all duration-300" id="navbar">
         <div class="container mx-auto px-4 flex justify-between items-center">
-            <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723558434/NewLogo_BLANK-Recovered_x4kgew.png" alt="Logo" class="h-24 header-logo">
-            <nav>
+            <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723558434/NewLogo_BLANK-Recovered_x4kgew.png" alt="Logo" class="logo h-16 md:h-24">
+            <nav class="hidden md:block">
                 <a href="#about" class="mr-4 hover:text-primary transition-colors">אודות</a>
                 <a href="#workshops" class="mr-4 hover:text-primary transition-colors">סדנאות</a>
                 <a href="#testimonials" class="hover:text-primary transition-colors">המלצות</a>
             </nav>
+            <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
         </div>
     </header>
+
+    <div id="mobileMenu" class="mobile-menu">
+        <a href="#about" onclick="toggleMobileMenu()">אודות</a>
+        <a href="#workshops" onclick="toggleMobileMenu()">סדנאות</a>
+        <a href="#testimonials" onclick="toggleMobileMenu()">המלצות</a>
+    </div>
 
     <main class="flex-grow">
         <section class="hero h-screen flex items-center justify-center text-white relative">
             <div class="container mx-auto px-4 text-center relative z-10" data-aos="fade-up">
-                <h2 class="text-5xl font-bold mb-4">עיצוב העתיד עם בינה מלאכותית</h2>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">סדנאות בינה מלאכותית למעצבי פנים</h1>
                 <p class="text-xl mb-8">הצטרפו לסדנאות המובילות בתחום ושדרגו את היכולות שלכם</p>
                 <a href="#workshops" class="btn-primary text-lg">גלו את הסדנאות שלנו</a>
             </div>
@@ -223,7 +188,7 @@
 
         <section id="about" class="py-20">
             <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold mb-12 text-center" data-aos="fade-up">למה להירשם לסדנאות שלנו?</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center" data-aos="fade-up">למה להירשם לסדנאות שלנו?</h2>
                 <div class="grid md:grid-cols-3 gap-8">
                     <div class="text-center" data-aos="fade-up" data-aos-delay="100">
                         <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723557185/0_3_1_ky5ipo.webp" alt="מומחיות" class="w-24 h-24 mx-auto mb-4 rounded-full shadow-lg">
@@ -246,7 +211,7 @@
 
         <section id="workshops" class="py-20 bg-gray-100">
             <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold mb-12 text-center" data-aos="fade-up">הסדנאות שלנו</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center" data-aos="fade-up">הסדנאות שלנו</h2>
                 <div class="grid md:grid-cols-3 gap-8">
                     <div class="workshop-card" data-aos="fade-up" data-aos-delay="100">
                         <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723557186/02a1e6c1c4674a6381ca1fa29e61c740_wd26rw.png" alt="AI for Interior Designers" class="w-full h-48 object-cover">
@@ -287,14 +252,14 @@
 
         <section id="testimonials" class="py-20 parallax" style="background-image: url('https://res.cloudinary.com/dsoh3yteb/image/upload/v1723557126/pexels-valeria-boltneva-827518_v9uqp2.jpg');">
             <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold mb-12 text-center text-white" data-aos="fade-up">מה אומרים המשתתפים שלנו?</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-white" data-aos="fade-up">מה אומרים המשתתפים שלנו?</h2>
                 <div class="grid md:grid-cols-2 gap-8">
                     <div class="bg-white p-6 rounded-lg shadow-lg testimonial" data-aos="fade-right">
                         <p class="mb-4">"הייתה סדנה מעולה! העשרת לנו את עולם התוכן ולימדת אותנו כלים משמעותיים וחשובים בעולם האדריכלות ועיצוב הפנים! תודה רבה על המקצועיות, ההדרכה המצויינת וההקשבה 👋🏻🥰"</p>
                         <p class="font-bold text-right">- דנה</p>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-lg testimonial" data-aos="fade-left">
-                        <p class="mb-4">"עידו תודה רבה על כל לימוד הטכניקות, השיטות. הסבלנות בהחלט בהחלט סדנא מעמיקה בעיקר לתחום. אין לי ספק שנפגש גם בסדנאות הבאות!!! מעבר להיכרות התוכנות שאיך עד כה לא נחשפתי אליהם וסופר חשובים במקצוע שלנו העברת השיעורים ביתר סבלנות הקנתה לי ביטחון ורצון לגעת בהכל. אז תודה רבה ונתראה בסדנא הבאה"</p>
+                        <p class="mb-4">"עידו תודה רבה על כל לימוד הטכניקות, השיטות. הסבלנות בהחלט בהחלט סדנא מעמיקה בעיקר לתחום. אין לי ספק שנפגש גם בסדנאות הבאות!!!. מעבר להיכרות התוכנות שאיך עד כה לא נחשפתי אליהם וסופר חשובים במקצוע שלנו העברת השיעורים ביתר סבלנות הקנתה לי ביטחון ורצון לגעת בהכל. אז תודה רבה ונתראה בסדנא הבאה"</p>
                         <p class="font-bold text-right">- זיו</p>
                     </div>
                 </div>
@@ -303,7 +268,7 @@
 
         <section class="cta-section py-20 text-white">
             <div class="container mx-auto px-4 text-center">
-                <h2 class="text-4xl font-bold mb-6" data-aos="fade-up">מוכנים לקחת את הצעד הבא?</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6" data-aos="fade-up">מוכנים לקחת את הצעד הבא?</h2>
                 <p class="text-xl mb-8" data-aos="fade-up" data-aos-delay="100">הצטרפו אלינו עכשיו וגלו כיצד בינה מלאכותית יכולה לשנות את עולם העיצוב שלכם</p>
                 <a href="#workshops" class="btn-primary text-lg inline-block" data-aos="fade-up" data-aos-delay="200">הרשמו לסדנה עכשיו</a>
             </div>
@@ -327,9 +292,11 @@
                 </div>
                 <div>
                     <h4 class="text-xl font-bold mb-4">עקבו אחרינו</h4>
-                    <div class="flex justify-center space-x-6 mt-4">
+                    <div class="flex items-center space-x-4">
                         <a href="https://www.facebook.com/profile.php?id=61553596496338" target="_blank" class="hover:text-primary transition-colors"><i class="fab fa-facebook-f text-2xl"></i></a>
+                        <span class="text-gray-400">|</span>
                         <a href="https://www.tiktok.com/@triroars" target="_blank" class="hover:text-primary transition-colors"><i class="fab fa-tiktok text-2xl"></i></a>
+                        <span class="text-gray-400">|</span>
                         <a href="https://www.instagram.com/triroars/" target="_blank" class="hover:text-primary transition-colors"><i class="fab fa-instagram text-2xl"></i></a>
                     </div>
                 </div>
@@ -377,6 +344,11 @@
             duration: 1000,
             once: true,
         });
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
 
         function openPopup(workshopType) {
             document.getElementById('popup').style.display = 'flex';
