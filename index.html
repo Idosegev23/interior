@@ -4,27 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>סדנאות בינה מלאכותית למעצבי פנים</title>
+    <!-- קישורים לסגנונות ולספריות -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- גופן מותאם -->
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap');
-
+        /* הגדרות צבעים וגופנים */
         :root {
             --color-primary: #65218F;
             --color-secondary: #363B46;
             --color-accent: #C4E4F9;
             --color-highlight: #346B75;
-            --color-light: #C4E4F9;
+            --color-light: #F9F9F9;
             --color-dark: #0D0D0D;
         }
 
         body {
             font-family: 'Heebo', sans-serif;
-            background: linear-gradient(135deg, var(--color-light), #ffffff);
+            background-color: var(--color-light);
             color: var(--color-secondary);
+            text-align: right;
         }
 
+        /* כפתור ראשי */
         .btn-primary {
             background: linear-gradient(45deg, var(--color-primary), var(--color-accent));
             color: white;
@@ -34,6 +38,7 @@
             display: inline-block;
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
         .btn-primary:hover {
@@ -42,12 +47,14 @@
             background: linear-gradient(45deg, var(--color-accent), var(--color-primary));
         }
 
+        /* כרטיסי סדנאות */
         .workshop-card {
-            background: rgba(255, 255, 255, 0.8);
+            background: white;
             border-radius: 1rem;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             transition: all 0.3s ease;
+            text-align: center;
         }
 
         .workshop-card:hover {
@@ -55,11 +62,13 @@
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
 
+        /* אזור ההרואי */
         .hero {
             background-image: url('https://res.cloudinary.com/dsoh3yteb/image/upload/v1723557125/pexels-atbo-245208_bwwxln.jpg');
             background-size: cover;
             background-position: center;
             position: relative;
+            text-align: center;
         }
 
         .hero::before {
@@ -72,30 +81,31 @@
             background: rgba(0, 0, 0, 0.5);
         }
 
-        .parallax {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
+        /* תיבת המלצות */
         .testimonial {
             position: relative;
             overflow: hidden;
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            text-align: right;
         }
 
         .testimonial::before {
-            content: '"';
+            content: '“';
             position: absolute;
             top: -20px;
-            left: 10px;
+            left: 20px;
             font-size: 100px;
             color: rgba(101, 33, 143, 0.1);
             font-family: serif;
         }
 
+        /* אזור קריאה לפעולה */
         .cta-section {
             background: linear-gradient(45deg, var(--color-primary), var(--color-accent));
+            text-align: center;
         }
 
         input:focus, textarea:focus {
@@ -103,6 +113,7 @@
             box-shadow: 0 0 0 3px rgba(101, 33, 143, 0.3);
         }
 
+        /* תפריט נייד */
         .mobile-menu {
             display: none;
             position: fixed;
@@ -112,35 +123,42 @@
             bottom: 0;
             background-color: rgba(0, 0, 0, 0.9);
             z-index: 1000;
-        }
-        
-        .mobile-menu.active {
-            display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
         }
-        
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
         .mobile-menu a {
             color: white;
             font-size: 1.5rem;
             margin: 1rem 0;
         }
 
+        /* התאמות למובייל */
         @media (max-width: 768px) {
             .logo {
                 height: 4rem;
+            }
+
+            nav a {
+                margin-right: 0;
+                margin-left: 1rem;
             }
         }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
+    <!-- כותרת עליונה -->
     <header class="bg-transparent text-white py-6 fixed w-full z-50 transition-all duration-300" id="navbar">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723558434/NewLogo_BLANK-Recovered_x4kgew.png" alt="Logo" class="logo h-16 md:h-24">
-            <nav class="hidden md:block">
-                <a href="#about" class="mr-4 hover:text-primary transition-colors">אודות</a>
-                <a href="#workshops" class="mr-4 hover:text-primary transition-colors">סדנאות</a>
+            <nav class="hidden md:flex items-center">
+                <a href="#about" class="ml-4 hover:text-primary transition-colors">אודות</a>
+                <a href="#workshops" class="ml-4 hover:text-primary transition-colors">סדנאות</a>
                 <a href="#testimonials" class="hover:text-primary transition-colors">המלצות</a>
             </nav>
             <button class="md:hidden text-white" onclick="toggleMobileMenu()">
@@ -149,36 +167,40 @@
         </div>
     </header>
 
+    <!-- תפריט נייד -->
     <div id="mobileMenu" class="mobile-menu">
         <a href="#about" onclick="toggleMobileMenu()">אודות</a>
         <a href="#workshops" onclick="toggleMobileMenu()">סדנאות</a>
         <a href="#testimonials" onclick="toggleMobileMenu()">המלצות</a>
     </div>
 
+    <!-- תוכן ראשי -->
     <main class="flex-grow">
+        <!-- אזור הרואי -->
         <section class="hero h-screen flex items-center justify-center text-white relative">
-            <div class="container mx-auto px-4 text-center relative z-10" data-aos="fade-up">
+            <div class="container mx-auto px-4 relative z-10" data-aos="fade-up">
                 <h1 class="text-4xl md:text-5xl font-bold mb-4">סדנאות בינה מלאכותית למעצבי פנים</h1>
                 <p class="text-xl mb-8">הצטרפו לסדנאות המובילות בתחום ושדרגו את היכולות שלכם</p>
                 <a href="#workshops" class="btn-primary text-lg">גלו את הסדנאות שלנו</a>
             </div>
         </section>
 
+        <!-- אודות -->
         <section id="about" class="py-20">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center" data-aos="fade-up">למה להירשם לסדנאות שלנו?</h2>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div data-aos="fade-up" data-aos-delay="100">
                         <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723557185/0_3_1_ky5ipo.webp" alt="מומחיות" class="w-24 h-24 mx-auto mb-4 rounded-full shadow-lg">
                         <h3 class="text-2xl font-bold mb-2">מומחיות</h3>
                         <p>סדנאות נבנו על ידי מעצבי פנים ומומחי AI</p>
                     </div>
-                    <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div data-aos="fade-up" data-aos-delay="200">
                         <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723557185/0_3_on8o7x.webp" alt="ניסיון מעשי" class="w-24 h-24 mx-auto mb-4 rounded-full shadow-lg">
                         <h3 class="text-2xl font-bold mb-2">ניסיון מעשי</h3>
                         <p>שיעורים מעשיים - מתרגלים ביחד עם המרצה</p>
                     </div>
-                    <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div data-aos="fade-up" data-aos-delay="300">
                         <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723557125/pexels-maksim-goncharenok-4352247_curkda.jpg" alt="קהילה" class="w-24 h-24 mx-auto mb-4 rounded-full shadow-lg">
                         <h3 class="text-2xl font-bold mb-2">קהילה</h3>
                         <p>הצטרפו לקהילה הענקית של מעצבי הפנים שלנו</p>
@@ -187,10 +209,11 @@
             </div>
         </section>
 
+        <!-- סדנאות -->
         <section id="workshops" class="py-20 bg-gray-100">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center" data-aos="fade-up">הסדנאות שלנו</h2>
-                <div class="grid md:grid-cols-3 gap-8">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- סדנה 1 -->
                     <div class="workshop-card" data-aos="fade-up" data-aos-delay="100">
                         <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723557186/02a1e6c1c4674a6381ca1fa29e61c740_wd26rw.png" alt="AI for Interior Designers" class="w-full h-48 object-cover">
@@ -224,27 +247,24 @@
                             <a href="https://wa.me/972547667775?text=שלום אני רוצה להרשם לסדנא סדנת PromeAI מה התאריכים הקרובים?" class="btn-primary w-full">הרשמה</a>
                         </div>
                     </div>
-                    <!-- סדנה חדשה - HomeStyler -->
+                    <!-- סדנה 4 -->
                     <div class="workshop-card" data-aos="fade-up" data-aos-delay="400">
-                        <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723557125/pexels-maksim-goncharenok-4352247_curkda.jpg" alt="סדנת יסודות HomeStyler" class="w-full h-48 object-cover">
+                        <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723557185/_c50c8048-35fb-4679-9382-b69f014f5d6e_duq94z.jpg" alt="סדנת יסודות HomeStyler" class="w-full h-48 object-cover">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold mb-2">סדנת יסודות HomeStyler</h3>
                             <p class="mb-4">
                                 בסדנה זו, תקבלו הכרות מעמיקה עם תוכנת HomeStyler לעיצוב פנים. במשך ארבעה מפגשים מעשיים של שעה וחצי כל אחד ומפגש שאלות ותשובות לאחר, תלמדו:
-                                <ul class="list-disc pr-5 text-right">
-                                    <li>מבוא לתוכנה והתמצאות בממשק המשתמש.</li>
-                                    <li>יישום עקרונות תכנון מרחב ותאורה </li>
-                                    <li>הנחת קירות, חלונות ועיצוב רצפה ליצירת חללים פונקציונליים ואסתטיים.</li>
-                                    <li>הוספת רהיטים ואקססוריז לחלל המעוצב.</li>
-                                    <li>עיצוב קירות רגיל ומתקדם, כולל שימוש בגלריית המודלים.</li>
-                                    <li>ביצוע רינדורים להדמיית העיצוב הסופי.</li>
-                                </ul>
-                        
-                        הסדנה מתקיימת בזום, התוכנה ללא עלות וכוללת ליווי והדרכה אישית. הצטרפו אלינו לחוויה מלמדת ומעשירה בעולם העיצוב הדיגיטלי!
-                            כל המפגשים מוקלטים
                             </p>
+                            <ul class="list-disc pr-5 text-right mb-4">
+                                <li>מבוא לתוכנה והתמצאות בממשק המשתמש.</li>
+                                <li>יישום עקרונות תכנון מרחב ותאורה.</li>
+                                <li>הנחת קירות, חלונות ועיצוב רצפה.</li>
+                                <li>הוספת רהיטים ואקססוריז.</li>
+                                <li>עיצוב קירות רגיל ומתקדם.</li>
+                                <li>ביצוע רינדורים להדמיית העיצוב הסופי.</li>
+                            </ul>
                             <p class="mb-2"><strong>משך:</strong> שעה וחצי כל מפגש</p>
-                            <p class="mb-4"><strong>עלות:</strong> ₪1200</p>
+                            <p class="mb-4"><strong>עלות:</strong> ₪1,200</p>
                             <a href="https://wa.me/972547667775?text=שלום אני רוצה להרשם לסדנא סדנת יסודות HomeStyler מה התאריכים הקרובים?" class="btn-primary w-full">הרשמה</a>
                         </div>
                     </div>
@@ -252,15 +272,16 @@
             </div>
         </section>
 
-                <section id="testimonials" class="py-20 parallax" style="background-image: url('https://res.cloudinary.com/dsoh3yteb/image/upload/v1723557126/pexels-valeria-boltneva-827518_v9uqp2.jpg');">
+        <!-- המלצות -->
+        <section id="testimonials" class="py-20" style="background-image: url('https://res.cloudinary.com/dsoh3yteb/image/upload/v1723557126/pexels-valeria-boltneva-827518_v9uqp2.jpg'); background-size: cover; background-position: center;">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-white" data-aos="fade-up">מה אומרים המשתתפים שלנו?</h2>
                 <div class="grid md:grid-cols-2 gap-8">
-                    <div class="bg-white p-6 rounded-lg shadow-lg testimonial" data-aos="fade-right">
+                    <div class="testimonial" data-aos="fade-right">
                         <p class="mb-4">"הייתה סדנה מעולה! העשרת לנו את עולם התוכן ולימדת אותנו כלים משמעותיים וחשובים בעולם האדריכלות ועיצוב הפנים! תודה רבה על המקצועיות, ההדרכה המצויינת וההקשבה 👋🏻🥰"</p>
                         <p class="font-bold text-right">- דנה</p>
                     </div>
-                    <div class="bg-white p-6 rounded-lg shadow-lg testimonial" data-aos="fade-left">
+                    <div class="testimonial" data-aos="fade-left">
                         <p class="mb-4">"עידו תודה רבה על כל לימוד הטכניקות, השיטות. הסבלנות בהחלט בהחלט סדנא מעמיקה בעיקר לתחום. אין לי ספק שנפגש גם בסדנאות הבאות!!!. מעבר להיכרות התוכנות שאיך עד כה לא נחשפתי אליהם וסופר חשובים במקצוע שלנו העברת השיעורים ביתר סבלנות הקנתה לי ביטחון ורצון לגעת בהכל. אז תודה רבה ונתראה בסדנא הבאה"</p>
                         <p class="font-bold text-right">- זיו</p>
                     </div>
@@ -268,8 +289,9 @@
             </div>
         </section>
 
+        <!-- קריאה לפעולה -->
         <section class="cta-section py-20 text-white">
-            <div class="container mx-auto px-4 text-center">
+            <div class="container mx-auto px-4">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6" data-aos="fade-up">מוכנים לקחת את הצעד הבא?</h2>
                 <p class="text-xl mb-8" data-aos="fade-up" data-aos-delay="100">הצטרפו אלינו עכשיו וגלו כיצד בינה מלאכותית יכולה לשנות את עולם העיצוב שלכם</p>
                 <a href="#workshops" class="btn-primary text-lg inline-block" data-aos="fade-up" data-aos-delay="200">הרשמו לסדנה עכשיו</a>
@@ -277,9 +299,10 @@
         </section>
     </main>
 
+    <!-- תחתית -->
     <footer class="bg-gray-800 text-white py-8">
         <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-3 gap-8 text-center md:text-right">
                 <div>
                     <h3 class="text-2xl font-bold mb-4">AI לעיצוב פנים</h3>
                     <p>מובילים את המהפכה בעולם עיצוב הפנים עם טכנולוגיות AI מתקדמות.</p>
@@ -294,29 +317,24 @@
                 </div>
                 <div>
                     <h4 class="text-xl font-bold mb-4">עקבו אחרינו</h4>
-                    <div class="flex items-center space-x-4">
+                    <div class="flex justify-center md:justify-start items-center space-x-4">
                         <a href="https://www.facebook.com/profile.php?id=61553596496338" target="_blank" class="hover:text-primary transition-colors"><i class="fab fa-facebook-f text-2xl"></i></a>
-                        <span class="text-gray-400">|</span>
                         <a href="https://www.tiktok.com/@triroars" target="_blank" class="hover:text-primary transition-colors"><i class="fab fa-tiktok text-2xl"></i></a>
-                        <span class="text-gray-400">|</span>
                         <a href="https://www.instagram.com/triroars/" target="_blank" class="hover:text-primary transition-colors"><i class="fab fa-instagram text-2xl"></i></a>
-                        <span class="text-gray-400">|</span>
                         <a href="https://chat.whatsapp.com/IKy7NXxUc7rBBMbDii9yQ9" target="_blank" class="hover:text-primary transition-colors"><i class="fab fa-whatsapp text-2xl"></i></a>
                     </div>
                 </div>
             </div>
             <div class="mt-8 text-center">
                 <a href="https://chat.whatsapp.com/IKy7NXxUc7rBBMbDii9yQ9" target="_blank" class="btn-primary inline-block mb-4">
-                    <i class="fab fa-whatsapp mr-2"></i>הצטרפו לקבוצת הוואטסאפ שלנו
+                    <i class="fab fa-whatsapp ml-2"></i>הצטרפו לקבוצת הוואטסאפ שלנו
                 </a>
-                <p>&copy; 2024 סדנאות בינה מלאכותית למעצבי פנים. TriRaors - BY - IDO SEGEV כל הזכויות שמורות.</p>
+                <p>&copy; 2024 סדנאות בינה מלאכותית למעצבי פנים. כל הזכויות שמורות.</p>
             </div>
         </div>
     </footer>
 
-
-    <!-- הסרתי את קוד הפופאפ והסקריפטים הקשורים אליו, כי הם כבר לא נחוצים -->
-
+    <!-- סקריפטים -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
         AOS.init({
@@ -329,7 +347,7 @@
             mobileMenu.classList.toggle('active');
         }
 
-        // Smooth scrolling for anchor links
+        // גלילה חלקה
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -342,7 +360,7 @@
             });
         });
 
-        // Navbar color change on scroll
+        // שינוי צבע תפריט על גלילה
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
