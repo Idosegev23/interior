@@ -159,19 +159,23 @@
         }
 
         .btn-secondary {
-            background-color: #4A5568;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 0.25rem;
-            text-decoration: none;
-            display: inline-block;
-            margin-right: 0.5rem;
-            transition: background-color 0.3s ease;
-        }
+    background: linear-gradient(45deg, var(--color-primary), var(--color-accent));
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
 
-        .btn-secondary:hover {
-            background-color: #2D3748;
-        }
+.btn-secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(45deg, var(--color-accent), var(--color-primary));
+}
+
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
