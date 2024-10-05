@@ -93,7 +93,7 @@
         }
 
         .testimonial::before {
-            content: '“';
+            content: '"';
             position: absolute;
             top: -20px;
             left: 20px;
@@ -149,6 +149,29 @@
                 margin-left: 1rem;
             }
         }
+
+        .workshop-details {
+            display: none;
+            padding: 1rem;
+            background-color: #f0f0f0;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .btn-secondary {
+            background-color: #4A5568;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            display: inline-block;
+            margin-right: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #2D3748;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
@@ -174,8 +197,42 @@
         <a href="#testimonials" onclick="toggleMobileMenu()">המלצות</a>
     </div>
 
-    <!-- כרטיסי סדנאות לאחר העדכון -->
+    <!-- תוכן ראשי -->
     <main class="flex-grow">
+        <!-- אזור הרואי -->
+        <section class="hero h-screen flex items-center justify-center text-white relative">
+            <div class="container mx-auto px-4 relative z-10" data-aos="fade-up">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">סדנאות בינה מלאכותית למעצבי פנים</h1>
+                <p class="text-xl mb-8">הצטרפו לסדנאות המובילות בתחום ושדרגו את היכולות שלכם</p>
+                <a href="#workshops" class="btn-primary text-lg">גלו את הסדנאות שלנו</a>
+            </div>
+        </section>
+
+        <!-- אודות -->
+        <section id="about" class="py-20">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center" data-aos="fade-up">למה להירשם לסדנאות שלנו?</h2>
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div data-aos="fade-up" data-aos-delay="100">
+                        <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723557185/0_3_1_ky5ipo.webp" alt="מומחיות" class="w-24 h-24 mx-auto mb-4 rounded-full shadow-lg">
+                        <h3 class="text-2xl font-bold mb-2">מומחיות</h3>
+                        <p>סדנאות נבנו על ידי מעצבי פנים ומומחי AI</p>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="200">
+                        <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723557185/0_3_on8o7x.webp" alt="ניסיון מעשי" class="w-24 h-24 mx-auto mb-4 rounded-full shadow-lg">
+                        <h3 class="text-2xl font-bold mb-2">ניסיון מעשי</h3>
+                        <p>שיעורים מעשיים - מתרגלים ביחד עם המרצה</p>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="300">
+                        <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723557125/pexels-maksim-goncharenok-4352247_curkda.jpg" alt="קהילה" class="w-24 h-24 mx-auto mb-4 rounded-full shadow-lg">
+                        <h3 class="text-2xl font-bold mb-2">קהילה</h3>
+                        <p>הצטרפו לקהילה הענקית של מעצבי הפנים שלנו</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- סדנאות -->
         <section id="workshops" class="py-20 bg-gray-100">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center" data-aos="fade-up">הסדנאות שלנו</h2>
@@ -188,26 +245,26 @@
                             <p class="mb-4">למדו על הכלים החדשניים של בינה מלאכותית שישנו את האופן שבו אתם מעצבים.</p>
                             <p class="mb-2"><strong>משך:</strong> שעה וחצי כל מפגש</p>
                             <p class="mb-4"><strong>עלות:</strong> ₪399</p>
-                            <button onclick="toggleDetails('ai-details')" class="btn-primary w-full mb-4">פרטים נוספים</button>
-                            <div id="ai-details" class="hidden">
-                                <p class="mb-4">בואו להכיר את עולם הבינה המלאכותית וכיצד הוא משנה את פני העיצוב. תלמדו איך להשתמש בכלים מבוססי AI כדי ליצור עיצובים מרהיבים ולייעל תהליכי עבודה.</p>
+                            <button onclick="toggleDetails('ai-workshop')" class="btn-secondary">פרטים נוספים</button>
+                            <a href="https://mrng.to/7Y4VZ713sS" class="btn-primary">רכישה</a>
+                            <div id="ai-workshop-details" class="workshop-details">
+                                <p>בואו להכיר את עולם הבינה המלאכותית וכיצד הוא משנה את פני העיצוב. בסדנה זו תלמדו איך להשתמש בכלים מבוססי AI כדי ליצור עיצובים מרהיבים, לייעל תהליכי עבודה ולהציע ללקוחות חוויה מותאמת אישית. תוכלו ללמוד כיצד להפיק השראה, לייצר ויזואליזציות מורכבות במהירות ולהשיג תוצאות שעומדות בקדמת הטכנולוגיה. הסדנה מתאימה למעצבי פנים המעוניינים לנצל את הטכנולוגיה המתקדמת כדי להתבלט בשוק ולהציג פתרונות יצירתיים ומדויקים עבור לקוחותיהם.</p>
                             </div>
-                            <a href="https://mrng.to/7Y4VZ713sS" class="btn-primary w-full">רכישה</a>
                         </div>
                     </div>
                     <!-- סדנה 2 -->
                     <div class="workshop-card" data-aos="fade-up" data-aos-delay="200">
                         <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723557185/System_Auto-save_Untitled_Master_Bedroom-1_vpnklm.jpg" alt="Midjourney Workshop" class="w-full h-48 object-cover">
-                        <div class="p-6">
+<div class="p-6">
                             <h3 class="text-2xl font-bold mb-2">סדנת Midjourney למעצבי פנים</h3>
                             <p class="mb-4">גלו כיצד Midjourney יכול לשפר את תהליך העיצוב שלכם ולהפוך רעיונות לויזואליזציות מדהימות.</p>
                             <p class="mb-2"><strong>משך:</strong> שעתיים כל מפגש</p>
                             <p class="mb-4"><strong>עלות:</strong> ₪699</p>
-                            <button onclick="toggleDetails('midjourney-details')" class="btn-primary w-full mb-4">פרטים נוספים</button>
-                            <div id="midjourney-details" class="hidden">
-                                <p class="mb-4">תלמדו כיצד להפוך רעיונות עיצוביים להדמיות מרהיבות באמצעות Midjourney, ולהציג ללקוחות תוצרים במהירות.</p>
+                            <button onclick="toggleDetails('midjourney-workshop')" class="btn-secondary">פרטים נוספים</button>
+                            <a href="https://mrng.to/pEjJtyhkB3" class="btn-primary">רכישה</a>
+                            <div id="midjourney-workshop-details" class="workshop-details">
+                                <p>בסדנה זו תלמדו להשתמש ב-Midjourney – כלי שמאפשר להפוך רעיונות עיצוביים להדמיות מרהיבות ואמיתיות. Midjourney מציע טכנולוגיית בינה מלאכותית עוצמתית שיוצרת ויזואליזציות אמנותיות מרשימות בתוך דקות, מה שמאפשר לכם לשתף רעיונות עם לקוחות בזמן אמת ולתת להם לראות את הפרויקט מתעורר לחיים עוד לפני שהתחיל בפועל. הסדנה מתאימה לכל מי שרוצה לייעל את תהליך העבודה ולהציג ללקוחות תוצרים ברמה הגבוהה ביותר.</p>
                             </div>
-                            <a href="https://mrng.to/pEjJtyhkB3" class="btn-primary w-full">רכישה</a>
                         </div>
                     </div>
                     <!-- סדנה 3 -->
@@ -218,11 +275,11 @@
                             <p class="mb-4">למדו כיצד להשתמש ב-PromeAI ככלי יעיל לשיפור תהליכי העיצוב והתכנון שלכם.</p>
                             <p class="mb-2"><strong>משך:</strong> שעתיים</p>
                             <p class="mb-4"><strong>עלות:</strong> ₪249</p>
-                            <button onclick="toggleDetails('promeai-details')" class="btn-primary w-full mb-4">פרטים נוספים</button>
-                            <div id="promeai-details" class="hidden">
-                                <p class="mb-4">תלמדו כיצד להשתמש ב-PromeAI ליצירת הדמיות ריאליסטיות, התאמת מודלים, ושיפור תהליכי עיצוב.</p>
+                            <button onclick="toggleDetails('promeai-workshop')" class="btn-secondary">פרטים נוספים</button>
+                            <a href="https://mrng.to/1xWfnUhOQy" class="btn-primary">רכישה</a>
+                            <div id="promeai-workshop-details" class="workshop-details">
+                                <p>PromeAI היא פלטפורמה עוצמתית לעיצוב בעזרת בינה מלאכותית המיועדת למעצבי פנים, אדריכלים ומעצבים נוספים. הסדנה תלמד אתכם כיצד להשתמש במגוון כלים ליצירת תמונות, עריכת וידאו ועיצובים בהתאמה אישית. עם עוזר עיצוב מונע AI, ספריית סגנונות רחבה וממשק משתמש ידידותי, תלמדו ליצור הדמיות ריאליסטיות של חללים ורהיטים, להתאים מודלים שונים ולשלוט בתוצאות כך שיתאימו לצרכים של כל לקוח. זוהי הזדמנות להפוך רעיונות למציאות וליצור פרויקטים מרשימים וחדשניים.</p>
                             </div>
-                            <a href="https://mrng.to/1xWfnUhOQy" class="btn-primary w-full">רכישה</a>
                         </div>
                     </div>
                     <!-- סדנה 4 -->
@@ -230,14 +287,14 @@
                         <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723557185/_c50c8048-35fb-4679-9382-b69f014f5d6e_duq94z.jpg" alt="סדנת יסודות HomeStyler" class="w-full h-48 object-cover">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold mb-2">סדנת יסודות HomeStyler</h3>
-                            <p class="mb-4">בסדנה זו תלמדו להכיר את תוכנת HomeStyler לעיצוב פנים.</p>
+                            <p class="mb-4">למדו ליצור הדמיות מרהיבות ותכניות מדויקות עם HomeStyler.</p>
                             <p class="mb-2"><strong>משך:</strong> שעה וחצי כל מפגש</p>
                             <p class="mb-4"><strong>עלות:</strong> ₪1,199</p>
-                            <button onclick="toggleDetails('homestyler-details')" class="btn-primary w-full mb-4">פרטים נוספים</button>
-                            <div id="homestyler-details" class="hidden">
-                                <p class="mb-4">תלמדו כיצד לבנות חללים, לבחור חומרים ורהיטים וליצור מצגות שממחישות בצורה מיטבית את הרעיונות שלכם.</p>
+                            <button onclick="toggleDetails('homestyler-workshop')" class="btn-secondary">פרטים נוספים</button>
+                            <a href="https://mrng.to/rrIaw5ti8o" class="btn-primary">רכישה</a>
+                            <div id="homestyler-workshop-details" class="workshop-details">
+                                <p>רוצים להפתיע את הלקוחות שלכם עם הדמיות תלת-ממדיות מרהיבות? בסדנת HomeStyler נלמד אתכם איך להשתמש בתוכנה המובילה ליצירת עיצובים והדמיות תלת-ממד. תלמדו כיצד לבנות חללים, לבחור חומרים ורהיטים וליצור מצגות שממחישות בצורה מיטבית את הרעיונות שלכם. הסדנה תספק לכם את הכלים להציג ללקוחות תמונה ברורה ומוחשית של הפרויקט עוד לפני שהוא מתחיל, מה שמשפר את התקשורת עם הלקוח ומסייע בקבלת החלטות.</p>
                             </div>
-                            <a href="https://mrng.to/rrIaw5ti8o" class="btn-primary w-full">רכישה</a>
                         </div>
                     </div>
                     <!-- סדנה 5 -->
@@ -248,18 +305,49 @@
                             <p class="mb-4">למדו ליצור דפי נחיתה שהופכים מבקרים ללקוחות.</p>
                             <p class="mb-2"><strong>משך:</strong> 2 מפגשים, כל מפגש שעה וחצי</p>
                             <p class="mb-4"><strong>עלות:</strong> ₪499</p>
-                            <button onclick="toggleDetails('landingpage-details')" class="btn-primary w-full mb-4">פרטים נוספים</button>
-                            <div id="landingpage-details" class="hidden">
-                                <p class="mb-4">תלמדו כיצד ליצור דפי נחיתה מושכים עם עיצוב נכון, כתיבת תוכן שמדבר ללקוחות שלכם ואופטימיזציה למנועי חיפוש.</p>
+                            <button onclick="toggleDetails('landing-page-workshop')" class="btn-secondary">פרטים נוספים</button>
+                            <a href="https://mrng.to/wenQtnX5gq" class="btn-primary">רכישה</a>
+                            <div id="landing-page-workshop-details" class="workshop-details">
+                                <p>בסדנה זו תלמדו כיצד ליצור דפי נחיתה שמושכים לקוחות ומביאים תוצאות. דפי נחיתה הם הכלי שלכם להציג שירותים ומוצרים, להניע לפעולה ולחבר את הלקוחות למותג שלכם. תלמדו על עקרונות עיצוב נכונים, כתיבת תוכן שמדבר ללקוחות שלכם ואופטימיזציה למנועי חיפוש. עם הידע והכלים שתקבלו, תוכלו להגדיל את כמות הפניות העסקיות ולהפוך את המבקרים באתר ללקוחות בפועל.</p>
                             </div>
-                            <a href="https://mrng.to/wenQtnX5gq" class="btn-primary w-full">רכישה</a>
                         </div>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                    <p class="text-xl font-bold mb-4">אל תפספסו את ההזדמנות להתקדם ולהוביל בתחום עיצוב הפנים!</p>
+                    <p class="text-lg mb-6">הצטרפו לסדנאות המקצועיות שיקנו לכם את הכלים והידע להצליח בשוק התחרותי של היום. מספר המקומות מוגבל—הירשמו עכשיו והבטיחו את מקומכם!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- המלצות -->
+        <section id="testimonials" class="py-20" style="background-image: url('https://res.cloudinary.com/dsoh3yteb/image/upload/v1723557126/pexels-valeria-boltneva-827518_v9uqp2.jpg'); background-size: cover; background-position: center;">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-white" data-aos="fade-up">מה אומרים המשתתפים שלנו?</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="testimonial" data-aos="fade-right">
+                        <p class="mb-4">"הייתה סדנה מעולה! העשרת לנו את עולם התוכן ולימדת אותנו כלים משמעותיים וחשובים בעולם האדריכלות ועיצוב הפנים! תודה רבה על המקצועיות, ההדרכה המצויינת וההקשבה 👋🏻🥰"</p>
+                        <p class="font-bold text-right">- דנה</p>
+                    </div>
+                    <div class="testimonial" data-aos="fade-left">
+                        <p class="mb-4">"עידו תודה רבה על כל לימוד הטכניקות, השיטות. הסבלנות בהחלט בהחלט סדנא מעמיקה בעיקר לתחום. אין לי ספק שנפגש גם בסדנאות הבאות!!!. מעבר להיכרות התוכנות שאיך עד כה לא נחשפתי אליהם וסופר חשובים במקצוע שלנו העברת השיעורים ביתר סבלנות הקנתה לי ביטחון ורצון לגעת בהכל. אז תודה רבה ונתראה בסדנא הבאה"</p>
+                        <p class="font-bold text-right">- זיו</p>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- קריאה לפעולה -->
+        <section class="cta-section py-20 text-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6" data-aos="fade-up">מוכנים לקחת את הצעד הבא?</h2>
+                <p class="text-xl mb-8" data-aos="fade-up" data-aos-delay="100">הצטרפו אלינו עכשיו וגלו כיצד בינה מלאכותית יכולה לשנות את עולם העיצוב שלכם</p>
+                <a href="#workshops" class="btn-primary text-lg inline-block" data-aos="fade-up" data-aos-delay="200">הרשמו לסדנה עכשיו</a>
+            </div>
+        </section>
     </main>
 
+    <!-- תחתית -->
     <footer class="bg-gray-800 text-white py-8">
         <div class="container mx-auto px-4">
             <div class="grid md:grid-cols-3 gap-8 text-center md:text-right">
@@ -277,7 +365,7 @@
                 </div>
                 <div>
                     <h4 class="text-xl font-bold mb-4">עקבו אחרינו</h4>
-                    <div class="flex justify-center md:justify-start items-center space-x-4">
+<div class="flex justify-center md:justify-start items-center space-x-4">
                         <a href="https://www.facebook.com/profile.php?id=61553596496338" target="_blank" class="hover:text-primary transition-colors"><i class="fab fa-facebook-f text-2xl"></i></a>
                         <a href="https://www.tiktok.com/@triroars" target="_blank" class="hover:text-primary transition-colors"><i class="fab fa-tiktok text-2xl"></i></a>
                         <a href="https://www.instagram.com/triroars/" target="_blank" class="hover:text-primary transition-colors"><i class="fab fa-instagram text-2xl"></i></a>
@@ -307,6 +395,15 @@
             mobileMenu.classList.toggle('active');
         }
 
+        function toggleDetails(workshopId) {
+            const details = document.getElementById(`${workshopId}-details`);
+            if (details.style.display === "none" || details.style.display === "") {
+                details.style.display = "block";
+            } else {
+                details.style.display = "none";
+            }
+        }
+
         // גלילה חלקה
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -331,11 +428,6 @@
                 navbar.classList.add('bg-transparent');
             }
         });
-
-        function toggleDetails(detailsId) {
-            const details = document.getElementById(detailsId);
-            details.classList.toggle('hidden');
-        }
     </script>
 </body>
 </html>
