@@ -237,118 +237,124 @@
         </section>
 
         <!-- סדנאות -->
-        <section id="workshops" class="py-20 bg-gray-100">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center" data-aos="fade-up">הסדנאות שלנו</h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- סדנה 1 -->
-                    <div class="workshop-card" data-aos="fade-up" data-aos-delay="100">
-                        <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723557186/02a1e6c1c4674a6381ca1fa29e61c740_wd26rw.png" alt="AI for Interior Designers" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2">סדנת בינה מלאכותית למעצבי פנים</h3>
-                            <p class="mb-4">למדו על הכלים החדשניים של בינה מלאכותית שישנו את האופן שבו אתם מעצבים.</p>
-                            <p class="mb-2"><strong>משך:</strong> שעה וחצי כל מפגש</p>
-                            <p class="mb-4"><strong>עלות:</strong> ₪399</p>
-                            <button onclick="toggleDetails('ai-workshop')" class="btn-secondary">פרטים נוספים</button>
-                            <a href="https://mrng.to/7Y4VZ713sS" class="btn-primary">רכישה</a>
-                            <div id="ai-workshop-details" class="workshop-details">
-                                <p>בואו להכיר את עולם הבינה המלאכותית וכיצד הוא משנה את פני העיצוב. בסדנה זו תלמדו איך להשתמש בכלים מבוססי AI כדי ליצור עיצובים מרהיבים, לייעל תהליכי עבודה ולהציע ללקוחות חוויה מותאמת אישית. תוכלו ללמוד כיצד להפיק השראה, לייצר ויזואליזציות מורכבות במהירות ולהשיג תוצאות שעומדות בקדמת הטכנולוגיה. הסדנה מתאימה למעצבי פנים המעוניינים לנצל את הטכנולוגיה המתקדמת כדי להתבלט בשוק ולהציג פתרונות יצירתיים ומדויקים עבור לקוחותיהם.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- סדנה 2 -->
-                    <div class="workshop-card" data-aos="fade-up" data-aos-delay="200">
-                        <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723557185/System_Auto-save_Untitled_Master_Bedroom-1_vpnklm.jpg" alt="Midjourney Workshop" class="w-full h-48 object-cover">
-<div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2">סדנת Midjourney למעצבי פנים</h3>
-                            <p class="mb-4">גלו כיצד Midjourney יכול לשפר את תהליך העיצוב שלכם ולהפוך רעיונות לויזואליזציות מדהימות.</p>
-                            <p class="mb-2"><strong>משך:</strong> שעתיים כל מפגש</p>
-                            <p class="mb-4"><strong>עלות:</strong> ₪699</p>
-                            <button onclick="toggleDetails('midjourney-workshop')" class="btn-secondary">פרטים נוספים</button>
-                            <a href="https://mrng.to/pEjJtyhkB3" class="btn-primary">רכישה</a>
-                            <div id="midjourney-workshop-details" class="workshop-details">
-                                <p>בסדנה זו תלמדו להשתמש ב-Midjourney – כלי שמאפשר להפוך רעיונות עיצוביים להדמיות מרהיבות ואמיתיות. Midjourney מציע טכנולוגיית בינה מלאכותית עוצמתית שיוצרת ויזואליזציות אמנותיות מרשימות בתוך דקות, מה שמאפשר לכם לשתף רעיונות עם לקוחות בזמן אמת ולתת להם לראות את הפרויקט מתעורר לחיים עוד לפני שהתחיל בפועל. הסדנה מתאימה לכל מי שרוצה לייעל את תהליך העבודה ולהציג ללקוחות תוצרים ברמה הגבוהה ביותר.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- סדנה 3 -->
-                    <div class="workshop-card" data-aos="fade-up" data-aos-delay="300">
-                        <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723557185/_c50c8048-35fb-4679-9382-b69f014f5d6e_duq94z.jpg" alt="PromeAI Workshop" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2">סדנת PromeAI</h3>
-                            <p class="mb-4">למדו כיצד להשתמש ב-PromeAI ככלי יעיל לשיפור תהליכי העיצוב והתכנון שלכם.</p>
-                            <p class="mb-2"><strong>משך:</strong> שעתיים</p>
-                            <p class="mb-4"><strong>עלות:</strong> ₪249</p>
-                            <button onclick="toggleDetails('promeai-workshop')" class="btn-secondary">פרטים נוספים</button>
-                            <a href="https://mrng.to/1xWfnUhOQy" class="btn-primary">רכישה</a>
-                            <div id="promeai-workshop-details" class="workshop-details">
-                                <p>PromeAI היא פלטפורמה עוצמתית לעיצוב בעזרת בינה מלאכותית המיועדת למעצבי פנים, אדריכלים ומעצבים נוספים. הסדנה תלמד אתכם כיצד להשתמש במגוון כלים ליצירת תמונות, עריכת וידאו ועיצובים בהתאמה אישית. עם עוזר עיצוב מונע AI, ספריית סגנונות רחבה וממשק משתמש ידידותי, תלמדו ליצור הדמיות ריאליסטיות של חללים ורהיטים, להתאים מודלים שונים ולשלוט בתוצאות כך שיתאימו לצרכים של כל לקוח. זוהי הזדמנות להפוך רעיונות למציאות וליצור פרויקטים מרשימים וחדשניים.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- סדנה 4 -->
-                    <div class="workshop-card" data-aos="fade-up" data-aos-delay="400">
-                        <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723557185/_c50c8048-35fb-4679-9382-b69f014f5d6e_duq94z.jpg" alt="סדנת יסודות HomeStyler" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2">סדנת יסודות HomeStyler</h3>
-                            <p class="mb-4">למדו ליצור הדמיות מרהיבות ותכניות מדויקות עם HomeStyler.</p>
-                            <p class="mb-2"><strong>משך:</strong> שעה וחצי כל מפגש</p>
-                            <p class="mb-4"><strong>עלות:</strong> ₪1,199</p>
-                            <button onclick="toggleDetails('homestyler-workshop')" class="btn-secondary">פרטים נוספים</button>
-                            <a href="https://mrng.to/rrIaw5ti8o" class="btn-primary">רכישה</a>
-                            <div id="homestyler-workshop-details" class="workshop-details">
-                                <p>רוצים להפתיע את הלקוחות שלכם עם הדמיות תלת-ממדיות מרהיבות? בסדנת HomeStyler נלמד אתכם איך להשתמש בתוכנה המובילה ליצירת עיצובים והדמיות תלת-ממד. תלמדו כיצד לבנות חללים, לבחור חומרים ורהיטים וליצור מצגות שממחישות בצורה מיטבית את הרעיונות שלכם. הסדנה תספק לכם את הכלים להציג ללקוחות תמונה ברורה ומוחשית של הפרויקט עוד לפני שהוא מתחיל, מה שמשפר את התקשורת עם הלקוח ומסייע בקבלת החלטות.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- סדנה 5 -->
-                    <div class="workshop-card" data-aos="fade-up" data-aos-delay="500">
-                        <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723731945/webszite_wsamua.png" alt="סדנת יצירת דפי נחיתה" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2">סדנת יצירת דפי נחיתה</h3>
-                            <p class="mb-4">למדו ליצור דפי נחיתה שהופכים מבקרים ללקוחות.</p>
-                            <p class="mb-2"><strong>משך:</strong> 2 מפגשים, כל מפגש שעה וחצי</p>
-                            <p class="mb-4"><strong>עלות:</strong> ₪499</p>
-                            <button onclick="toggleDetails('landing-page-workshop')" class="btn-secondary">פרטים נוספים</button>
-                            <a href="https://mrng.to/wenQtnX5gq" class="btn-primary">רכישה</a>
-                            <div id="landing-page-workshop-details" class="workshop-details">
-                                <p>בסדנה זו תלמדו כיצד ליצור דפי נחיתה שמושכים לקוחות ומביאים תוצאות. דפי נחיתה הם הכלי שלכם להציג שירותים ומוצרים, להניע לפעולה ולחבר את הלקוחות למותג שלכם. תלמדו על עקרונות עיצוב נכונים, כתיבת תוכן שמדבר ללקוחות שלכם ואופטימיזציה למנועי חיפוש. עם הידע והכלים שתקבלו, תוכלו להגדיל את כמות הפניות העסקיות ולהפוך את המבקרים באתר ללקוחות בפועל.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center mt-12">
-                    <p class="text-xl font-bold mb-4">אל תפספסו את ההזדמנות להתקדם ולהוביל בתחום עיצוב הפנים!</p>
-                    <p class="text-lg mb-6">הצטרפו לסדנאות המקצועיות שיקנו לכם את הכלים והידע להצליח בשוק התחרותי של היום. מספר המקומות מוגבל—הירשמו עכשיו והבטיחו את מקומכם!</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- המלצות -->
-        <section id="testimonials" class="py-20" style="background-image: url('https://res.cloudinary.com/dsoh3yteb/image/upload/v1723557126/pexels-valeria-boltneva-827518_v9uqp2.jpg'); background-size: cover; background-position: center;">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-white" data-aos="fade-up">מה אומרים המשתתפים שלנו?</h2>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="testimonial" data-aos="fade-right">
-                        <p class="mb-4">"הייתה סדנה מעולה! העשרת לנו את עולם התוכן ולימדת אותנו כלים משמעותיים וחשובים בעולם האדריכלות ועיצוב הפנים! תודה רבה על המקצועיות, ההדרכה המצויינת וההקשבה 👋🏻🥰"</p>
-                        <p class="font-bold text-right">- דנה</p>
-                    </div>
-                    <div class="testimonial" data-aos="fade-left">
-                        <p class="mb-4">"עידו תודה רבה על כל לימוד הטכניקות, השיטות. הסבלנות בהחלט בהחלט סדנא מעמיקה בעיקר לתחום. אין לי ספק שנפגש גם בסדנאות הבאות!!!. מעבר להיכרות התוכנות שאיך עד כה לא נחשפתי אליהם וסופר חשובים במקצוע שלנו העברת השיעורים ביתר סבלנות הקנתה לי ביטחון ורצון לגעת בהכל. אז תודה רבה ונתראה בסדנא הבאה"</p>
-                        <p class="font-bold text-right">- זיו</p>
+        <!-- סדנאות -->
+<section id="workshops" class="py-20 bg-gray-100">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center" data-aos="fade-up">הסדנאות שלנו</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- סדנה 1 -->
+            <div class="workshop-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723557186/02a1e6c1c4674a6381ca1fa29e61c740_wd26rw.png" alt="AI for Interior Designers" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold mb-2">סדנת בינה מלאכותית למעצבי פנים</h3>
+                    <p class="mb-4">למדו על הכלים החדשניים של בינה מלאכותית שישנו את האופן שבו אתם מעצבים.</p>
+                    <p class="mb-2"><strong>משך:</strong> שעה וחצי כל מפגש</p>
+                    <p class="mb-2"><strong>תאריכים:</strong></p>
+                    <ul class="list-disc list-inside mb-2">
+                        <li>מפגש 1: 21.10 בשעה 20:00</li>
+                        <li>מפגש 2: 29.10 בשעה 20:00</li>
+                    </ul>
+                    <p class="mb-4"><strong>עלות:</strong> ₪399</p>
+                    <button onclick="toggleDetails('ai-workshop')" class="btn-secondary">פרטים נוספים</button>
+                    <a href="https://mrng.to/7Y4VZ713sS" class="btn-primary">רכישה</a>
+                    <div id="ai-workshop-details" class="workshop-details">
+                        <p>בואו להכיר את עולם הבינה המלאכותית וכיצד הוא משנה את פני העיצוב. בסדנה זו תלמדו איך להשתמש בכלים מבוססי AI כדי ליצור עיצובים מרהיבים, לייעל תהליכי עבודה ולהציע ללקוחות חוויה מותאמת אישית. תוכלו ללמוד כיצד להפיק השראה, לייצר ויזואליזציות מורכבות במהירות ולהשיג תוצאות שעומדות בקדמת הטכנולוגיה. הסדנה מתאימה למעצבי פנים המעוניינים לנצל את הטכנולוגיה המתקדמת כדי להתבלט בשוק ולהציג פתרונות יצירתיים ומדויקים עבור לקוחותיהם.</p>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- קריאה לפעולה -->
-        <section class="cta-section py-20 text-white">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6" data-aos="fade-up">מוכנים לקחת את הצעד הבא?</h2>
-                <p class="text-xl mb-8" data-aos="fade-up" data-aos-delay="100">הצטרפו אלינו עכשיו וגלו כיצד בינה מלאכותית יכולה לשנות את עולם העיצוב שלכם</p>
-                <a href="#workshops" class="btn-primary text-lg inline-block" data-aos="fade-up" data-aos-delay="200">הרשמו לסדנה עכשיו</a>
+            <!-- סדנה 2 -->
+            <div class="workshop-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723557185/System_Auto-save_Untitled_Master_Bedroom-1_vpnklm.jpg" alt="Midjourney Workshop" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold mb-2">סדנת Midjourney למעצבי פנים</h3>
+                    <p class="mb-4">גלו כיצד Midjourney יכול לשפר את תהליך העיצוב שלכם ולהפוך רעיונות לויזואליזציות מדהימות.</p>
+                    <p class="mb-2"><strong>משך:</strong> שעתיים כל מפגש</p>
+                    <p class="mb-2"><strong>תאריכים:</strong></p>
+                    <ul class="list-disc list-inside mb-2">
+                        <li>מפגש 1: 30.10 בשעה 20:00</li>
+                        <li>מפגש 2: 4.11 בשעה 20:00</li>
+                    </ul>
+                    <p class="mb-4"><strong>עלות:</strong> ₪699</p>
+                    <button onclick="toggleDetails('midjourney-workshop')" class="btn-secondary">פרטים נוספים</button>
+                    <a href="https://mrng.to/pEjJtyhkB3" class="btn-primary">רכישה</a>
+                    <div id="midjourney-workshop-details" class="workshop-details">
+                        <p>בסדנה זו תלמדו להשתמש ב-Midjourney – כלי שמאפשר להפוך רעיונות עיצוביים להדמיות מרהיבות ואמיתיות. Midjourney מציע טכנולוגיית בינה מלאכותית עוצמתית שיוצרת ויזואליזציות אמנותיות מרשימות בתוך דקות, מה שמאפשר לכם לשתף רעיונות עם לקוחות בזמן אמת ולתת להם לראות את הפרויקט מתעורר לחיים עוד לפני שהתחיל בפועל. הסדנה מתאימה לכל מי שרוצה לייעל את תהליך העבודה ולהציג ללקוחות תוצרים ברמה הגבוהה ביותר.</p>
+                    </div>
+                </div>
             </div>
-        </section>
+            <!-- סדנה 3 -->
+            <div class="workshop-card" data-aos="fade-up" data-aos-delay="300">
+                <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723557185/_c50c8048-35fb-4679-9382-b69f014f5d6e_duq94z.jpg" alt="PromeAI Workshop" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold mb-2">סדנת PromeAI</h3>
+                    <p class="mb-4">למדו כיצד להשתמש ב-PromeAI ככלי יעיל לשיפור תהליכי העיצוב והתכנון שלכם.</p>
+                    <p class="mb-2"><strong>משך:</strong> שעתיים</p>
+                    <p class="mb-2"><strong>תאריך:</strong> 5.11 בשעה 20:00</p>
+                    <p class="mb-4"><strong>עלות:</strong> ₪249</p>
+                    <button onclick="toggleDetails('promeai-workshop')" class="btn-secondary">פרטים נוספים</button>
+                    <a href="https://mrng.to/1xWfnUhOQy" class="btn-primary">רכישה</a>
+                    <div id="promeai-workshop-details" class="workshop-details">
+                        <p>PromeAI היא פלטפורמה עוצמתית לעיצוב בעזרת בינה מלאכותית המיועדת למעצבי פנים, אדריכלים ומעצבים נוספים. הסדנה תלמד אתכם כיצד להשתמש במגוון כלים ליצירת תמונות, עריכת וידאו ועיצובים בהתאמה אישית. עם עוזר עיצוב מונע AI, ספריית סגנונות רחבה וממשק משתמש ידידותי, תלמדו ליצור הדמיות ריאליסטיות של חללים ורהיטים, להתאים מודלים שונים ולשלוט בתוצאות כך שיתאימו לצרכים של כל לקוח. זוהי הזדמנות להפוך רעיונות למציאות וליצור פרויקטים מרשימים וחדשניים.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- סדנה 4 -->
+            <div class="workshop-card" data-aos="fade-up" data-aos-delay="400">
+                <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723557185/_c50c8048-35fb-4679-9382-b69f014f5d6e_duq94z.jpg" alt="סדנת יסודות HomeStyler" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold mb-2">סדנת יסודות HomeStyler</h3>
+                    <p class="mb-4">למדו ליצור הדמיות מרהיבות ותכניות מדויקות עם HomeStyler.</p>
+                    <p class="mb-2"><strong>משך:</strong> שעה וחצי כל מפגש, 4 מפגשים + מפגש שאלות ותשובות</p>
+                    <p class="mb-2"><strong>תאריכים:</strong></p>
+                    <ul class="list-disc list-inside mb-2">
+                        <li>מפגש 1: 6.11 בשעה 20:00</li>
+                        <li>מפגש 2: 17.11 בשעה 20:00</li>
+                        <li>מפגש 3: 18.11 בשעה 20:00</li>
+                        <li>מפגש 4: 19.11 בשעה 20:00</li>
+                        <li>מפגש שאלות ותשובות: 20.11 בשעה 20:00</li>
+                    </ul>
+                    <p class="mb-4"><strong>עלות:</strong> ₪1,199</p>
+                    <button onclick="toggleDetails('homestyler-workshop')" class="btn-secondary">פרטים נוספים</button>
+                    <a href="https://mrng.to/rrIaw5ti8o" class="btn-primary">רכישה</a>
+                    <div id="homestyler-workshop-details" class="workshop-details">
+                        <p>רוצים להפתיע את הלקוחות שלכם עם הדמיות תלת-ממדיות מרהיבות? בסדנת HomeStyler נלמד אתכם איך להשתמש בתוכנה המובילה ליצירת עיצובים והדמיות תלת-ממד. תלמדו כיצד לבנות חללים, לבחור חומרים ורהיטים וליצור מצגות שממחישות בצורה מיטבית את הרעיונות שלכם. הסדנה תספק לכם את הכלים להציג ללקוחות תמונה ברורה ומוחשית של הפרויקט עוד לפני שהוא מתחיל, מה שמשפר את התקשורת עם הלקוח ומסייע בקבלת החלטות.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- סדנה 5 -->
+            <div class="workshop-card" data-aos="fade-up" data-aos-delay="500">
+                <img src="https://res.cloudinary.com/dsoh3yteb/image/upload/v1723731945/webszite_wsamua.png" alt="סדנת יצירת דפי נחיתה" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold mb-2">סדנת יצירת דפי נחיתה</h3>
+                    <p class="mb-4">למדו ליצור דפי נחיתה שהופכים מבקרים ללקוחות.</p>
+                    <p class="mb-2"><strong>משך:</strong> שעה וחצי כל מפגש, 2 מפגשים</p>
+                    <p class="mb-2"><strong>תאריכים:</strong></p>
+                    <ul class="list-disc list-inside mb-2">
+                        <li>מפגש 1: 21.11 בשעה 20:00</li>
+                        <li>מפגש 2: 24.11 בשעה 20:00</li>
+                    </ul>
+                    <p class="mb-4"><strong>עלות:</strong> ₪499</p>
+                    <button onclick="toggleDetails('landing-page-workshop')" class="btn-secondary">פרטים נוספים</button>
+                    <a href="https://mrng.to/wenQtnX5gq" class="btn-primary">רכישה</a>
+                    <div id="landing-page-workshop-details" class="workshop-details">
+<p>בסדנה זו תלמדו כיצד ליצור דפי נחיתה שמושכים לקוחות ומביאים תוצאות. דפי נחיתה הם הכלי שלכם להציג שירותים ומוצרים, להניע לפעולה ולחבר את הלקוחות למותג שלכם. תלמדו על עקרונות עיצוב נכונים, כתיבת תוכן שמדבר ללקוחות שלכם ואופטימיזציה למנועי חיפוש. עם הידע והכלים שתקבלו, תוכלו להגדיל את כמות הפניות העסקיות ולהפוך את המבקרים באתר ללקוחות בפועל.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-12">
+            <p class="text-xl font-bold mb-4">אל תפספסו את ההזדמנות להתקדם ולהוביל בתחום עיצוב הפנים!</p>
+            <p class="text-lg mb-6">הצטרפו לסדנאות המקצועיות שיקנו לכם את הכלים והידע להצליח בשוק התחרותי של היום. מספר המקומות מוגבל—הירשמו עכשיו והבטיחו את מקומכם!</p>
+        </div>
+        <div class="bg-gray-200 p-6 rounded-lg mt-8">
+            <p class="text-center text-lg font-bold mb-2">מידע חשוב:</p>
+            <ul class="list-disc list-inside">
+                <li>כל הסדנאות יתקיימו בזום.</li>
+                <li>ההקלטות יהיו זמינות למשך חצי שנה.</li>
+            </ul>
+        </div>
+    </div>
+</section>
     </main>
 
     <!-- תחתית -->
